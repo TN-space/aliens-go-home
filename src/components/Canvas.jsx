@@ -49,7 +49,7 @@ const Canvas = (props) => {
         <g>
           <StartGame onClick={() => props.startGame()} />
           <Title />
-          <Leaderboard currentPlayer={leaderboard[6]} authenticate={signIn} leaderboard={leaderboard} />
+          <Leaderboard currentPlayer={props.currentPlayer} authenticate={signIn} leaderboard={props.players} />
         </g>
       }
 
@@ -86,7 +86,24 @@ Canvas.propTypes = {
     })).isRequired,
   }).isRequired,
   trackMouse: PropTypes.func.isRequired,
-  startGame: PropTypes.func.isRequired
+  startGame: PropTypes.func.isRequired,
+  currentPlayer: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    maxScore: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+  }),
+  players: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    maxScore: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+  }))
+}
+
+Canvas.defaultProps = {
+  currentPlayer: null,
+  players: null,
 }
 
 export default Canvas
