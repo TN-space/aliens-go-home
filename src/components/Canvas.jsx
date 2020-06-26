@@ -71,13 +71,6 @@ const Canvas = (props) => {
         </g>
       }
 
-      { props.gameState.started &&
-        <g>
-          <FlyingObject position={{x: -150, y: -300}}/>
-          <FlyingObject position={{x: 150, y: -300}}/>
-        </g>
-      }
-
       {props.gameState.flyingObjects.map(flyingObject => (
        <FlyingObject
          key={flyingObject.id}
